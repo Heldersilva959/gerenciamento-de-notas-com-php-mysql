@@ -66,7 +66,7 @@
 
 <hr>
 
-<h2>📷 Imagens do Projeto/h2>
+<h2>📷 Imagens do Projeto/h2> </h2>
 <p>
   Prints de telas do sistema a seguir:<br>
   <img src="" alt="Tela inicial" width="600"><br>
