@@ -26,31 +26,48 @@ if (!isset($_SESSION['aluno_id'])) {
         th {
             background-color: #f2f2f2;
         }
+        button {
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #1e90ff;
+        }
     </style>
 </head>
 <body>
     <H1> BOLETIM DO ALUNO:   </H1>
-</body>
-</html>
-
-<?php
+    <div>
+    <?php
 include("conexao.php");
 
 $aluno_id = $_SESSION['aluno_id'];
 
 $sql = "SELECT 
-    alunos.matricula, 
-    usuarios.nome AS aluno, 
-    disciplinas.nome AS disciplina, 
-    notas.nota, 
-    notas.dataL
+    a.matricula, 
+    u.nome AS aluno, 
+    t.nome AS turma,
+    d.nome AS disciplina, 
+    n.nota, 
+    n.dataL
 FROM 
-    notas
-INNER JOIN alunos ON notas.fk_aluno = alunos.id
-INNER JOIN usuarios ON alunos.fk_user = usuarios.id
-INNER JOIN disciplinas ON notas.fk_disc = disciplinas.id
+    notas n
+INNER JOIN alunos a ON n.fk_aluno = a.id
+INNER JOIN usuarios u ON a.fk_user = u.id
+INNER JOIN disciplinas d ON n.fk_disc = d.id
+LEFT JOIN turma_alunos ta ON a.id = ta.fk_aluno
+LEFT JOIN turmas t ON ta.fk_turma = t.id
 WHERE 
-    alunos.id = '$aluno_id' " ;
+    a.id = '$aluno_id' " ;
 
 $consulta = mysqli_query($connection, $sql); 
 
@@ -62,6 +79,7 @@ if ($consulta) {
         echo "<tr>
                 <th>Matrícula</th>
                 <th>Aluno</th>
+                <th>Turma</th>
                 <th>Disciplina</th>
                 <th>Nota</th>
                 <th>Data de Lançamento</th>
@@ -73,6 +91,7 @@ if ($consulta) {
             echo "<tr>";
             echo "<td>" . $row['matricula'] . "</td>";
             echo "<td>" . $row['aluno'] . "</td>";
+            echo "<td>" . $row['turma'] . "</td>";
             echo "<td>" . $row['disciplina'] . "</td>";
             echo "<td>" . $row['nota'] . "</td>";
             echo "<td>" . $row['dataL'] . "</td>";
@@ -90,4 +109,13 @@ if ($consulta) {
 // Fechando a conexão
 mysqli_close($connection);
 ?>
+
+    </div>
+<br><br>
+<div style="text-align: center;">
+        <button onclick="window.location.href='logout.php'">Voltar</button>
+    </div>
+</body>
+</html>
+
 

@@ -1,4 +1,4 @@
- <?php 
+<?php 
 session_start();
 include("conexao.php");
 
@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     else{
-        echo "Email ou senha incorretos.";
+        header("Location: logout.php"); // Redireciona para a página de logout
+        exit();
     }
     }
     else{
@@ -42,10 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
-else{
-    header("Location: logout.php"); // Redireciona para a página de logout
-    exit();
-    }
 
 
 

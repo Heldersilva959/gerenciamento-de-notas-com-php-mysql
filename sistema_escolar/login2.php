@@ -35,18 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: professor.php?prof_id=". $user['id']);// envia para pagina do prof
 
         }
-    } else {
-        echo "CPF ou senha incorretos.";
+    }
+    else{
+        header("Location: logout.php"); // Redireciona para a página de logout
+        exit();
+    }
+    }
+    else{
+        header("Location: logout.php"); // Redireciona para a página de logout
+        exit();
     }
 }
-else{
-    echo "Email ou senha incorretos.";
-}
-}
-else{
-    header("Location: logout.php"); // Redireciona para a página de login com CPF
-    exit();
-    }
 
 ?>
 

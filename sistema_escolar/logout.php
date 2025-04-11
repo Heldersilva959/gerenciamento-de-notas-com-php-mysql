@@ -8,13 +8,12 @@
 </head>
 <body>
    <div>
-      <h1>Logout</h1>
-      <p>Você foi desconectado com sucesso.</p>
+      <h1>Erro</h1>
+      <p>Dados incorretos. Tente novamente.</p>
       <a href="index.php">Voltar para a página de login</a>
 <?php
 session_start();
 session_destroy();
-header("Location: index.php");
 exit();
 ?>
 </div>
