@@ -66,9 +66,9 @@
 
 <hr>
 
-<h2>📷 Imagens do Projeto (opcional)</h2>
+<h2>📷 Imagens do Projeto/h2>
 <p>
-  Você pode adicionar screenshots aqui usando Markdown ou HTML, por exemplo:<br>
+  Prints de telas do sistema a seguir:<br>
   <img src="" alt="Tela inicial" width="600"><br>
     <img src="" alt="Login" width="600"><br>
       <img src="" alt="Área do Aluno" width="600"><br>
